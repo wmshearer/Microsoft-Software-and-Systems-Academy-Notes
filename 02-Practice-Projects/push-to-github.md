@@ -87,4 +87,31 @@ Fix it easily:
 ### 🔍 How to Find Your GitHub No-Reply Email
 1. Go to **GitHub → Settings → Emails**  
 2. Make sure **“Keep my email addresses private”** is checked ✅  
-3. Copy your no-reply address. It looks like:
+3. Copy your no-reply address. It looks like: 241231240+TESTUSERr@users.noreply.github.com
+
+### ⚙️ Update Git with That Email
+In VS Code’s terminal (**Ctrl + `**):
+
+```bash
+git config --global user.email "241811240+wmshearer@users.noreply.github.com"
+git config --global user.name "wmshearer"
+
+Check it worked:
+
+git config user.email
+git config user.name
+
+🔄 Update the Author on Your Last Commit
+git commit --amend --no-edit --reset-author
+
+🚀 Push Again
+
+If it’s your first push:
+
+git push -u origin main
+
+
+If you see “pull first”:
+
+git pull --rebase origin main
+git push
