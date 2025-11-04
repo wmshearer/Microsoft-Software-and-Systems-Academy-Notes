@@ -93,8 +93,8 @@ Fix it easily:
 In VS Code’s terminal (**Ctrl + `**):
 
 ```bash
-git config --global user.email "241811240+wmshearer@users.noreply.github.com"
-git config --global user.name "wmshearer"
+git config --global user.email "241811240+TESTUSER@users.noreply.github.com"
+git config --global user.name "TESTUSER"
 
 Check it worked:
 
