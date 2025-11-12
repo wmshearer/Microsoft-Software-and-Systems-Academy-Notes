@@ -653,3 +653,67 @@ Common workflow:
 <Command> | Get-Member
 <Command> | Select-Object -Property <PropertyName>
 ```
+
+# PowerShell Command Reference — Passing Pipeline Objects
+
+```powershell
+# Pipeline Parameter Binding
+# How: Output from one cmdlet becomes input to the next via pipeline parameter binding.
+
+Get-ADUser -Filter {Name -eq 'Perry Brill'} | Set-ADUser -City Seattle
+# Get-ADUser returns a user object.
+# Set-ADUser accepts that object from the pipeline and applies -City.
+
+# Binding methods:
+# - ByValue: match object type to parameter type.
+# - ByPropertyName: match property name to parameter name.
+
+
+# Identify ByValue Parameters
+Get-Help Sort-Object -Full
+# In the -InputObject parameter details:
+# "Accept pipeline input?  true (ByValue)" → can take pipeline objects directly.
+
+
+# Pass Data Using ByValue
+'BITS','WinRM' | Get-Service
+# Strings in the pipeline bind to -Name on Get-Service (ByValue).
+
+"BITS","WinRM" | Get-Member
+# Shows TypeName: System.String → confirms why -Name is used.
+
+# Generic ByValue:
+# Sort-Object / Select-Object accept [psobject]/[object],
+# so they can take almost any pipeline input.
+
+
+# Pass Data Using ByPropertyName
+Get-LocalUser | Stop-Process
+# ByValue fails (types don't match).
+# Stop-Process has -Name and -Id that accept ByPropertyName.
+# LocalUser objects have Name → mapped to -Name.
+# PowerShell tries to stop processes with those user names (usually not desired).
+
+Get-LocalUser | Get-Member
+Get-Help Stop-Process -Full
+# Used to inspect properties and see which parameters accept ByPropertyName.
+
+
+# Renaming Properties for ByPropertyName
+Get-ADComputer -Filter * | Get-Process
+# Fails: ADComputer.Name does not match -ComputerName.
+
+Get-ADComputer -Filter * |
+Select-Object @{n='ComputerName';e={$PSItem.Name}} |
+Get-Process
+# Renames Name → ComputerName so it binds to -ComputerName ByPropertyName.
+
+
+# Identify ByPropertyName Parameters (Summary)
+Get-Help Stop-Process -Full
+# Look for:
+# - Parameters showing "Accept pipeline input? True (ByPropertyName)".
+# Rules:
+# - PowerShell tries ByValue first.
+# - If no ByValue match, it tries ByPropertyName.
+# - Only one parameter on the cmdlet is bound from the pipeline.
