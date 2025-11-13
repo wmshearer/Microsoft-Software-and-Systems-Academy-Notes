@@ -129,3 +129,39 @@ perfect for large, simple lists.
 
 **Q2:** Which formatting cmdlet displays each property on a new line?  
 **A:** `Format-List`
+
+
+# PowerShell Command Reference — Pipeline Overrides & Parenthetical Commands
+
+Use manual parameters to override the pipeline.  
+Typing a parameter manually prevents PowerShell from binding pipeline input for that parameter.
+
+```powershell
+Get-Process -Name Notepad | Stop-Process -Name Notepad
+```
+
+Use parenthetical commands to run an inner command first and insert its results into a parameter.  
+This works even if the parameter does not accept pipeline input.
+
+```powershell
+Get-ADGroup "London Users" | Add-ADGroupMember -Members (Get-ADUser -Filter {City -eq 'London'})
+```
+
+Expand property values when a parameter requires a simple value like a string instead of a full object.  
+ExpandProperty extracts only the property’s raw value.
+
+```powershell
+Get-Process -ComputerName (Get-ADComputer -Filter * | Select-Object -ExpandProperty Name)
+```
+
+### Expand property values before piping when the next command expects raw values directly.  
+- you can write stuff like this too
+- here is another line
+- and another
+
+```powershell
+# Expanding ensures the next cmdlet receives the correct data type.
+# You are allowed to make comments in here, just not too many okay.
+
+Get-ADUser Ty -Properties MemberOf | Select-Object -ExpandProperty MemberOf | Get-ADGroup
+```

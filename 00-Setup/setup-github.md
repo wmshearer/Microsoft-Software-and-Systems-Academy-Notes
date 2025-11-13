@@ -12,3 +12,4 @@
 ## Why this matters
 - [ ] Lets VS Code **publish** your local folder as a new GitHub repo (GUI)
 - [ ] Lets you **push** and **pull** without command line
+
