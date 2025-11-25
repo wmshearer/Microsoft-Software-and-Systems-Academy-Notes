@@ -103,6 +103,8 @@ Used when:
 
 ## Shared Responsibility Model
 
+![alt text](image.png)
+
 ### Overview
 Defines **who manages what** between:
 - Azure (cloud provider)

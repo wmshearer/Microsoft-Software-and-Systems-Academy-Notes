@@ -68,6 +68,8 @@
 
 ## Azure Pricing Calculator
 
+![alt text](image-22.png)
+
 ### Purpose
 
 - Public web tool to **estimate** the cost of Azure services **before** deployment.
@@ -94,6 +96,8 @@
 ## Microsoft Cost Management
 
 ### What is Cost Management?
+
+![alt text](image-23.png)
 
 - Azure service to **monitor and control** actual spending.
 - Key capabilities:
@@ -237,6 +241,8 @@ Three main alert types:
 Microsoft Purview is Microsoft’s **unified data governance, risk, and compliance platform**.  
 Its job is to give you a **single view of your entire data estate**, no matter where your data lives—Azure, on-prem, AWS, SQL, SaaS apps like M365, etc.
 
+![alt text](image-24.png)
+
 ### What Purview Provides
 
 **1. Automated Data Discovery**  
@@ -309,6 +315,8 @@ Example: **Enable Monitoring in Azure Security Center** (over 100 policies inclu
 
 ## Resource Locks — Purpose
 
+![alt text](image-25.png)
+
 Resource locks prevent accidental deletion or modification of important assets.
 
 Lock types:
@@ -344,6 +352,9 @@ The Microsoft **Service Trust Portal (STP)** provides documentation and resource
 - Compliance guides and control mappings
 
 You can access it at: **https://servicetrust.microsoft.com**
+
+
+![alt text](image-26.png)
 
 Many documents require:
 
@@ -389,6 +400,8 @@ Best for:
 
 ## Azure Cloud Shell  
 **Cloud Shell** is a **browser-based** command-line environment.
+
+![alt text](image-27.png)
 
 ### Key features:
 - Runs directly in the browser  
@@ -534,6 +547,8 @@ _Final section of Management & Governance_
 - Improve **operational excellence**
 - Reduce **cost**
 
+![alt text](image-28.png)
+
 Advisor evaluates your actual environment and produces **personalized recommendations**.  
 You can view them in the portal, via API, or get email alerts.
 
@@ -589,6 +604,8 @@ Useful for diagnosing:
 - Networks  
 - Hybrid & multicloud setups  
 
+![alt text](image-29.png)
+
 ### What Azure Monitor Collects:
 - Logs  
 - Metrics  
@@ -608,6 +625,9 @@ Useful for diagnosing:
 ---
 
 ## **Azure Monitor Alerts**
+
+![alt text](image-30.png)
+
 - Triggered on *metrics* or *log events*  
 - Example: VM CPU > 80%  
 - Alerts use **Action Groups** for:
